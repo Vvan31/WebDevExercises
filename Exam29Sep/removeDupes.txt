@@ -1,0 +1,5 @@
+function removeDupes(str) {
+    return ([...new Set(str)]).join("").toString();
+}
+let n = 'aabbsssbbbcc';
+console.log(removeDupes(n));

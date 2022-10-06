@@ -18,11 +18,9 @@ function binarySearch(arr, n){
     // If the value is too small, move the left pointer up
         }else if(n > arr[m_pointer]){
             l_pointer = m_pointer; 
-            // m_pointer = (r_pointer - l_pointer)/2; 
     // If the value is too large, move the right pointer down
         }else if(n < arr[m_pointer]){
             r_pointer = m_pointer; 
-            // m_pointer = (r_pointer - l_pointer)/2; 
     // If you never find the value, return -1
         }
     }
@@ -42,5 +40,6 @@ function recursiveBS(arr, n, l_pointer = 0, r_pointer = arr.length){
         return (n < arr[m_pointer])? recursiveBS(arr, n, l_pointer, m_pointer) : recursiveBS(arr, n, m_pointer, r_pointer);
     }
 }
+
 
 // console.log(recursiveBS(arr,990));
