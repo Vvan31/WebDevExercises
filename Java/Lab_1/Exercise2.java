@@ -10,12 +10,12 @@ Note: Use integer arithmetic and avoid floating point arithmetic.
  */
 class exercise2{
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Input the cents:");
-        int cents = sc.nextInt();
-        int dollars = cents / 100;
-        int remaining_cents = cents % 100;
-        System.out.printf("The value is %d dollars and %d cents.\n", dollars, remaining_cents);
-        sc.close();
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Input the cents:");
+            int cents = sc.nextInt();
+            int dollars = cents / 100;
+            int remaining_cents = cents % 100;
+            System.out.printf("The value is %d dollars and %d cents.\n", dollars, remaining_cents);
+            sc.close();
     }
 }
