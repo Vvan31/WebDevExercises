@@ -1,0 +1,9 @@
+public class Quiz1 {
+    public static void main(String[] args) {
+        int a = 5;
+        float b = 8;
+        float value = (a*a)+(2*a*b)+(b*b);
+        System.out.println("Value of the equation is " + value);
+    }
+    
+}
