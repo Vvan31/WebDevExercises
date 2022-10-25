@@ -1,16 +1,11 @@
 package Midterm_Project;
 
-import java.awt.LayoutManager;
-import java.util.jar.JarInputStream;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -27,7 +22,6 @@ public class GUI {
             GridLayout Layout = new GridLayout(6, 4);
             JPanel jPanel = new JPanel(new GridBagLayout());
             jPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
-            
             jPanel.setPreferredSize(new Dimension(540, 600));
 
             GridBagConstraints gbc = new GridBagConstraints();
@@ -46,21 +40,10 @@ public class GUI {
             // submiButton.setLocation(500, 500);
             // submiButton.setSize(100, 50);
             
-            // String result = (String)JOptionPane.showInputDialog(
-            //     jFrame,
-            //     "Your message:", 
-            //     "Say something",            
-            //     JOptionPane.PLAIN_MESSAGE,
-            //     null,            
-            //     null, 
-            //     "Hello!"
-            // );
-            //JLabel message = new JLabel(result);
-            JLabel message = new JLabel("This is a message example or result of a post. - 10:00 am");
+            
+            JLabel message = new JLabel("This is a message example of a post. - 10:00 am");
             jPanel.add(message);
             jPanel.add(submiButton, BorderLayout.SOUTH);
-
-            
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -1,7 +1,5 @@
 package Midterm_Project;
 
-import java.security.PublicKey;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,6 +13,7 @@ public class Post {
     public Post(JFrame frame,String message, String date){
         this.message = message;
         this.date = date;
+        createPostGUI(frame);
     }
     private void createPostGUI(JFrame frame){
         try {
