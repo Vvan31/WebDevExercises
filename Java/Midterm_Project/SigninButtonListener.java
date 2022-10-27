@@ -41,6 +41,7 @@ public class SigninButtonListener implements ActionListener{
             myWriter = new FileWriter("users.txt", true);
             myWriter.write(user.getText() + ","+ pass.getText()+"\n");
             myWriter.close();
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

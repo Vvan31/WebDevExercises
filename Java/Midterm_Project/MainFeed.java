@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 public class MainFeed {
     JFrame frame;
@@ -29,9 +31,10 @@ public class MainFeed {
         mainPanel =  new JPanel();
         mainPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
         mainPanel.setBackground(Color.getHSBColor(44, 35, 90)); 
-
+        
         scrollPanel = new JPanel();
-        scrollPanel.setPreferredSize( new Dimension(400, 200));
+        scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.PAGE_AXIS));
+        scrollPanel.setPreferredSize( new Dimension(500, 450));
         scrollPanel.setBackground(Color.getHSBColor(80, 50, 90)); 
         scrollPanel.setBounds(10, 100,300,300);
     }
@@ -42,10 +45,10 @@ public class MainFeed {
 
         JButton options = new JButton("Options");
         options.setBounds(450,20,60,25);
-        options.addActionListener(new OptionsButtonListener(user, pass, frame));
+        options.addActionListener(new OptionsButtonListener(user, pass, frame, scrollPanel));
 
         JTextField userTextfield = new JTextField(25);
-        userTextfield.setBounds(10,500,150,50);
+        userTextfield.setBounds(10,500,150,100);
 
         JButton postBtn = new JButton("Submit");
         options.setBounds(450,500,60,25);
@@ -66,18 +69,19 @@ public class MainFeed {
     private void createContentPanel() {
 
         //JScrollPane scroll = new JScrollPane(scrollPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        JScrollPane scroll = new JScrollPane(scrollPanel);
-        for (int i = 0; i < 80; i++) {
-            addPost("Hola", scroll);
+        for (int i = 0; i < 230; i++) {
+            addPost("Hola  -"+user+"\n", scrollPanel);
         }
-        //scrollPanel.add(scroll);
-        mainPanel.add(scrollPanel);
+        JScrollPane scroll = new JScrollPane(scrollPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setPreferredSize( new Dimension(450, 400));
+        mainPanel.add(scroll);
     }
 
-    private void addPost(String msg, JScrollPane scroll) {
+    private void addPost(String msg, JPanel scroll) {
         JLabel label = new JLabel(msg);
-        label.setAlignmentX(scroll.RIGHT_ALIGNMENT);
+        label.setAlignmentX(scroll.LEFT_ALIGNMENT);
+        label.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+
         scroll.add(label);
     }
 
