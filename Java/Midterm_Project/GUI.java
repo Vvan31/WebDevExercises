@@ -46,6 +46,15 @@ public class GUI {
             panel,
             frame
         ));
+
+        JButton signinButton = new JButton("Sign in");
+        signinButton.setBounds(160,100,80,25);
+        signinButton.addActionListener(new SigninButtonListener(
+            userTextfield, 
+            passwordTextfield,
+            messageLabel
+        ));
+
         panel.add(user_label);
         panel.add(password_label);
         panel.add(userTextfield);
@@ -53,6 +62,7 @@ public class GUI {
         panel.add(messageLabel);
 
         panel.add(loginButton);
+        panel.add(signinButton);
 
         frame.setVisible(true);
     }
@@ -82,5 +92,4 @@ public class GUI {
     public static void main(String[] args) {
         new GUI();
     }
-    
 }
