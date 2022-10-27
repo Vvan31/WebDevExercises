@@ -1,49 +1,79 @@
 package Midterm_Project;
 
 
+import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class GUI {
+    private JFrame frame;
+    private JPanel panel;
+
     public GUI(){
         mainPageSetup();
+        createLoginPage();
+    }
+
+    private void createLoginPage(){
+        JLabel user_label = new JLabel("User: ");
+        user_label.setBounds(10,20,80,25);
+
+        JTextField userTextfield = new JTextField(25);
+        userTextfield.setBounds(100,20,85,25);
+
+        JLabel password_label = new JLabel("Password: ");
+        password_label.setBounds(10,50,80,25);
+
+        JPasswordField passwordTextfield = new JPasswordField(25);
+        passwordTextfield.setBounds(100,50,85,25);
+
+        JLabel messageLabel = new JLabel("");
+        messageLabel.setBounds(30,150,300,25);
+
+        JButton loginButton = new JButton("Login");
+        loginButton.setBounds(80,100,80,25);
+        loginButton.addActionListener(new LoginButtonListener(
+            loginButton, 
+            userTextfield, 
+            passwordTextfield,
+            messageLabel,
+            panel,
+            frame
+        ));
+        panel.add(user_label);
+        panel.add(password_label);
+        panel.add(userTextfield);
+        panel.add(passwordTextfield);
+        panel.add(messageLabel);
+
+        panel.add(loginButton);
+
+        frame.setVisible(true);
     }
 
     private void mainPageSetup() {
         try {
-            GridLayout Layout = new GridLayout(6, 4);
-            JPanel jPanel = new JPanel(new GridBagLayout());
-            jPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
-            jPanel.setPreferredSize(new Dimension(540, 600));
 
-            GridBagConstraints gbc = new GridBagConstraints();
-            JFrame jFrame = new JFrame();
-            jFrame.add(jPanel, BorderLayout.CENTER);
-            jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);   
-            jFrame.setLocationRelativeTo(null); 
-            jFrame.setTitle("Main Page");
-            jFrame.pack();
-            jFrame.setVisible(true);
-            jFrame.setLocationRelativeTo(null);
-            //jFrame.setResizable(false);
-            // Content 
-            JButton submiButton = new JButton("Add Post");
-            submiButton.setSize(100, 80);
-            // submiButton.setLocation(500, 500);
-            // submiButton.setSize(100, 50);
-            
-            
-            JLabel message = new JLabel("This is a message example of a post. - 10:00 am");
-            jPanel.add(message);
-            jPanel.add(submiButton, BorderLayout.SOUTH);
+            JPanel panel = new JPanel();
+            panel.setLayout(null);
+            panel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
+
+            JFrame frame = new JFrame();
+            frame.setSize(500,700);
+            frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+            frame.setTitle("Trauma dumping");
+            frame.setVisible(true);
+            frame.add(panel);
+            panel.setBackground(Color.lightGray);
+
+            this.frame = frame;
+            this.panel = panel;
         } catch (Exception e) {
             System.out.println(e);
         }
