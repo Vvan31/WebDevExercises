@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 public class GUI {
     private JFrame frame;
@@ -17,13 +18,14 @@ public class GUI {
     private ImageIcon icon;
 
     public GUI(){
-        icon = new ImageIcon("rsz_beer.png");
+        // Declaration of image here because of rendering times. 
+        icon = new ImageIcon("WebDevExercises/Java/Midterm_Project/img/rsz_beer.png");
         mainPageSetup();
         createLoginPage();
     }
 
     private void createLoginPage(){
-        
+        // GUI components: Label, Buttons, Textfields. 
         JLabel icon_label = new JLabel(icon);
         icon_label.setBounds(200, 100, 100, 100);
 
@@ -53,48 +55,39 @@ public class GUI {
             frame
         ));
 
-        JButton signinButton = new JButton("Sign in");
-        signinButton.setBounds(245,300,100,25);
-        signinButton.addActionListener(new SigninButtonListener(
+        JButton signInButton = new JButton("Sign in");
+        signInButton.setBounds(245,300,100,25);
+        signInButton.addActionListener(new SigninButtonListener(
             userTextfield, 
             passwordTextfield,
             messageLabel
         ));
+        // Add the components to the main panel. 
         panel.add(icon_label);
-        //frame.setVisible(true);
-
         panel.add(user_label);
         panel.add(password_label);
         panel.add(userTextfield);
         panel.add(passwordTextfield);
         panel.add(messageLabel);
-
         panel.add(loginButton);
-        panel.add(signinButton);
-        
-
+        panel.add(signInButton);
+        // Acts like a refresh for all the components to show up. 
         frame.setVisible(true);
-        
     }
 
     private void mainPageSetup() {
         try {
-
-            JPanel panel = new JPanel();
+            panel = new JPanel();
             panel.setLayout(null);
             panel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
+            panel.setBackground(Color.lightGray);
 
-            JFrame frame = new JFrame();
-            frame.setSize(500,700);
-            frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+            frame = new JFrame();
+            frame.setSize(500,600);
+            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             frame.setTitle("Trauma dumping");
             frame.add(panel);
-            panel.setBackground(Color.lightGray);
             frame.setVisible(true);
-
-
-            this.frame = frame;
-            this.panel = panel;
         } catch (Exception e) {
             System.out.println(e);
         }

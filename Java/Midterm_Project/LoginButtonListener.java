@@ -38,6 +38,7 @@ public class LoginButtonListener implements ActionListener{
         if (validUser) {
             message.setText("Welcome!");
             frame.setVisible(true);
+                // Await 1 second for aesthetic purposes. :)
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e1) {
@@ -51,22 +52,22 @@ public class LoginButtonListener implements ActionListener{
             frame.setVisible(true);
         }
     }
-
+    // Checks if the user and password are valid. Returns boolean.
     private boolean validateUser() {
+        // Stores every user, password in HashMap.
         Map<String, String> userCredentials = new HashMap<String, String>();
         try {
-            File file = new File("users.txt");
+            File file = new File("WebDevExercises/Java/Midterm_Project/users.txt");
             Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
               String data = myReader.nextLine();
-              System.out.println(data);
+              // In txt example: Hello,Bob (Message),(User). 
+              // Adding Message as the key and user as the value for unique relations. 
               userCredentials.put(data.toString().split(",")[0],data.toString().split(",")[1]);
             }
             myReader.close();
-            System.out.println("User:  "+ user.getText() +"\npass key:  "+ userCredentials.get(user.getText()));
             if(userCredentials.get(user.getText()) != null){
                 if (userCredentials.get(user.getText()).equals(password.getText())) {
-                    System.out.println("user found");
                     return true;
                 } else {
                     return false;

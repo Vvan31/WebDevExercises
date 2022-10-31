@@ -27,23 +27,20 @@ public class SigninButtonListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            createJsonUser();
+            createUser();
         } catch (Exception error) {
-            // TODO: handle exception
             System.out.println(error);
         }        
     }
 
-
-    private void createJsonUser() {
+    private void createUser() {
         FileWriter myWriter;
         try {
-            myWriter = new FileWriter("users.txt", true);
+            myWriter = new FileWriter("WebDevExercises/Java/Midterm_Project/users.txt", true);
             myWriter.write(user.getText() + ","+ pass.getText()+"\n");
             myWriter.close();
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
        

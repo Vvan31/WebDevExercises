@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -38,7 +41,7 @@ public class OptionsButtonListener implements ActionListener{
 
         switch (option) {
             case "Log out":
-                frame.removeAll();
+                frame.dispose();;
                 new GUI();
                 break;
             case "Exit":
@@ -57,12 +60,7 @@ public class OptionsButtonListener implements ActionListener{
                 changeUserPass(newPass);
                 break;
             case "Do something":
-                Random rand = new Random();
-                float r = rand.nextFloat();
-                float g = rand.nextFloat();
-                float b = rand.nextFloat();
-                Color randomColor = new Color(r, g, b);
-                panel.setBackground(randomColor);
+                doSomething();
             break;
             default:
                 break;
@@ -92,7 +90,6 @@ public class OptionsButtonListener implements ActionListener{
             Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
               String data = myReader.nextLine();
-              System.out.println(data);
               userCredentials.put(data.toString().split(",")[0],data.toString().split(",")[1]);
             }
             myReader.close();
@@ -105,5 +102,17 @@ public class OptionsButtonListener implements ActionListener{
           }
         return userCredentials;
     }
+    private void doSomething(){
+        int[] red = {226, 125, 96};
+        int[] blue = {133,220,186};
+        int[] orange = {232, 168, 124};
+        int[] pink = {195, 141, 158};
+        int[] green = {65, 179, 154};
+        int[][] colorList = {red, blue, orange,pink,green};
 
+        Random rand = new Random();
+        int r = rand.nextInt(0,colorList.length-1);
+        Color randomColor = new Color(colorList[r][0],colorList[r][1],colorList[r][2]);
+        panel.setBackground(randomColor);
+    }
 }
