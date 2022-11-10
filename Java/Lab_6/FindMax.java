@@ -17,7 +17,7 @@ class FindMax <T>{
      public static <T> T array_max(T data[], T n) {
         //body of code
         // Collections.sort(obj);
-        n = Collections.max(data);
+        n = null;
         return n;
         
     }
