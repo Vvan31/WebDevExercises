@@ -11,6 +11,9 @@
         "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.swing.jar",
         "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.web.jar",
         "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx-swt.jar",
-        "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\postgresql-42.5.0.jar"
+        "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\postgresql-42.5.0.jar",
+        "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\unirest\\unirest-java-1.4.7.jar",
+        "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\unirest\\unirest-java-1.4.7-javadoc.jar",
+        "c:\\Users\\v31os\\Documents\\CICCC\\JavaFX\\unirest\\unirest-java-1.4.7-sources.jar"
     ]
 }

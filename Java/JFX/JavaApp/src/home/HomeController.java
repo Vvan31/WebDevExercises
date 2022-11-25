@@ -1,5 +1,6 @@
 package home;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.TextAlignment;
 
 public class HomeController implements Initializable{
     
@@ -31,22 +33,31 @@ public class HomeController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         this.homeModel = new HomeModel();
         userName_string = this.username_label.getText();
-        this.loadUserData();        
+        try {
+            this.loadUserData();
+        } catch (IOException | InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }        
     }
 
     //load data
     @FXML
-    public void loadUserData(){
-        this.username_label.setText(userName_string+ " Sign: "+ homeModel.getSign(userName_string));
-        System.out.println(" "+userName_string + "  Sign: "+ homeModel.getSign(userName_string));
+    public void loadUserData() throws IOException, InterruptedException{
+        username_label.setWrapText(true);
+        this.username_label.setText("Hi! " + userName_string+ " ");
+        // System.out.println(" "+userName_string + "  Sign: "+ homeModel.getSign(userName_string));
         
-        //Apiiii aqui :) 
-
+        //Api
+        horoscope_label.setWrapText(true);
+        horoscope_label.setTextAlignment(TextAlignment.JUSTIFY);
+        System.out.println(homeModel.getHoroscope(homeModel.getSign(userName_string)));
+        this.horoscope_label.setText(homeModel.getHoroscope(homeModel.getSign(userName_string)));
     }
 
     //update User's name
     @FXML
-    private void updateUserName(ActionEvent event){
+    private void updateUserName(ActionEvent event) throws IOException, InterruptedException{
         homeModel.updateUserName(this.userName_string,  homeModel.getSign(userName_string), this.updateName.getText());
         userName_string = updateName.getText();
         this.loadUserData();
@@ -55,7 +66,7 @@ public class HomeController implements Initializable{
 
     //update User's sign
     @FXML
-    private void updateUserSign(ActionEvent event){
+    private void updateUserSign(ActionEvent event) throws IOException, InterruptedException{
         homeModel.updateUserSign(this.userName_string,homeModel.getSign(userName_string), this.updateSign.getText());
         this.loadUserData();
         this.clearFields(null);

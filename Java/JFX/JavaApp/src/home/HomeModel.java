@@ -1,5 +1,10 @@
 package home;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +13,7 @@ import java.sql.SQLException;
 import dbUtil.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
+import netscape.javascript.JSObject;
 
 public class HomeModel {
     
@@ -163,5 +168,31 @@ public class HomeModel {
             }
         }
         return null;
+    }
+
+    public String getHoroscope(String sign) throws IOException, InterruptedException {
+        
+        HttpRequest request = HttpRequest.newBuilder()
+		.uri(URI.create("https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=aquarius&day=today"))
+		.header("X-RapidAPI-Key", "473af0ce5dmsh05af91a66aee28cp1f5a61jsnfdb2b69f95c7")
+		.header("X-RapidAPI-Host", "sameer-kumar-aztro-v1.p.rapidapi.com")
+		.method("POST", HttpRequest.BodyPublishers.noBody())
+		.build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body().toString().replace("{", "").replace("}", ""));
+        
+        String[] response_arr = response.body().toString().replace("{", "").replace("}", "").split(", \"");
+        System.out.println(response_arr[2]);
+        return response_arr[2].toString();
+        /* 
+        HttpRequest request = HttpRequest.newBuilder()
+		.uri(URI.create("https://astro-daily-live-horoscope.p.rapidapi.com/horoscope-career-monthly/aquarius"))
+		.header("X-RapidAPI-Key", "473af0ce5dmsh05af91a66aee28cp1f5a61jsnfdb2b69f95c7")
+		.header("X-RapidAPI-Host", "astro-daily-live-horoscope.p.rapidapi.com")
+		.method("GET", HttpRequest.BodyPublishers.noBody())
+		.build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+        */
     }
 }

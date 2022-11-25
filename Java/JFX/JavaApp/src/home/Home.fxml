@@ -8,23 +8,23 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.HomeController">
    <children>
-      <SplitPane dividerPositions="0.28307692307692306" layoutX="46.0" layoutY="36.0" orientation="VERTICAL" prefHeight="327.0" prefWidth="490.0">
+      <SplitPane dividerPositions="0.28307692307692306" layoutX="46.0" layoutY="36.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="550.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="550.0">
                <children>
                   <ImageView id="logo" fitHeight="89.0" fitWidth="138.0" layoutX="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/images/logo.png" />
                      </image>
                   </ImageView>
-                  <Label id="username_label" fx:id="username_label" text="$labelText" layoutX="232.0" layoutY="36.0" prefHeight="17.0" prefWidth="123.0"  wrapText="true" />
+                  <Label id="username_label" fx:id="username_label" text="$labelText" layoutX="180.0" layoutY="36.0" prefHeight="17.0" prefWidth="123.0"  wrapText="true" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label id="horoscope_label" fx:id="horoscope_label" alignment="TOP_LEFT" layoutX="175.0" layoutY="15.0" prefHeight="161.0" prefWidth="276.0" text="Label">
+                  <Label id="horoscope_label" fx:id="horoscope_label" alignment="TOP_LEFT" layoutX="175.0" layoutY="15.0" prefHeight="250.0" prefWidth="350.0" text="Label">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
