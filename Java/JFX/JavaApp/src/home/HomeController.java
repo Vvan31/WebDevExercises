@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 public class HomeController implements Initializable{
@@ -45,14 +46,17 @@ public class HomeController implements Initializable{
     @FXML
     public void loadUserData() throws IOException, InterruptedException{
         username_label.setWrapText(true);
-        this.username_label.setText("Hi! " + userName_string+ " ");
+        username_label.setFont(new Font("Arial", 14));
+
+        this.username_label.setText("Hi! " +userName_string+ ": " + homeModel.getSign(userName_string));
         // System.out.println(" "+userName_string + "  Sign: "+ homeModel.getSign(userName_string));
         
         //Api
         horoscope_label.setWrapText(true);
         horoscope_label.setTextAlignment(TextAlignment.JUSTIFY);
+        horoscope_label.setFont(new Font("Bond", 14));
         System.out.println(homeModel.getHoroscope(homeModel.getSign(userName_string)));
-        this.horoscope_label.setText(homeModel.getHoroscope(homeModel.getSign(userName_string)));
+        horoscope_label.setText(homeModel.getHoroscope(homeModel.getSign(userName_string)));
     }
 
     //update User's name
