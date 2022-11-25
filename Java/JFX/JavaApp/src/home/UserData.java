@@ -3,16 +3,17 @@ package home;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class EmployeeData {
+public class UserData {
     
     private StringProperty id;
     private StringProperty name;
-    private StringProperty department;
+    private StringProperty sign;
+    private StringProperty todaysHoroscope;
 
-    public EmployeeData(String id, String name, String department) {
+    public UserData(String id, String name, String sign) {
         this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
-        this.department = new SimpleStringProperty(department);
+        this.sign = new SimpleStringProperty(sign);
     }
 
     public StringProperty idProperty() {
@@ -31,11 +32,19 @@ public class EmployeeData {
         this.name = name;
     }
 
-    public StringProperty departmentProperty() {
-        return department;
+    public StringProperty signProperty() {
+        return sign;
     }
 
-    public void setDepartment(StringProperty department) {
-        this.department = department;
+    public void setsign(StringProperty sign) {
+        this.sign = sign;
+    }
+
+    public StringProperty signTodaysHoroscope() {
+        return todaysHoroscope;
+    }
+
+    public void setTodaysHoroscope(StringProperty todaysHoroscope) {
+        this.todaysHoroscope = todaysHoroscope;
     }
 }
