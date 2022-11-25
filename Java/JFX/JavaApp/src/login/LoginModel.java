@@ -28,7 +28,7 @@ public class LoginModel {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
 
-        String query = "SELECT * FROM login_tb WHERE \"USER\" = ? AND \"pass\" = ?";
+        String query = "SELECT * FROM astral_users WHERE \"username\" = ? AND \"passord\" = ?";
 
         try {
             statement = this.conn.prepareStatement(query);

@@ -18,6 +18,8 @@ public class LoginController implements Initializable{
 
     LoginModel loginModel = new LoginModel();
 
+    public String logUserName;
+
     @FXML
     private Label dbStatus;
     @FXML
@@ -38,7 +40,6 @@ public class LoginController implements Initializable{
         }else{
             this.dbStatus.setText("Not Connected");
         }
-        
     }
 
     @FXML
@@ -62,7 +63,11 @@ public class LoginController implements Initializable{
 
         Stage homeStage = new Stage();
         try {
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/home/Home.fxml")));
+            final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/home/Home.fxml"));
+            fxmlLoader.getNamespace()
+                      .put("labelText", username.getText());
+
+            Scene scene = new Scene(fxmlLoader.load());
 
             homeStage.setScene(scene);
             homeStage.setTitle("Home Page");

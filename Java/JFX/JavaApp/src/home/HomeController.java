@@ -1,5 +1,6 @@
 package home;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,31 +8,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.TextAlignment;
 
 public class HomeController implements Initializable{
     
     @FXML
-    private TextField name;
+    private Label username_label;
+    private String userName_string;
     @FXML
-    private TextField department;
+    private Label horoscope_label;
     @FXML
     private TextField updateName;
-    
-    @FXML
-    private TableView<EmployeeData> employeeDataTableView;
-    @FXML
-    private TableColumn<EmployeeData, String> idColumn;
-    @FXML
-    private TableColumn<EmployeeData, String> nameColumn;
-    @FXML
-    private TableColumn<EmployeeData, String> departmentColumn;
-
-    @FXML
-    private Button addEntryBtn;
+    @FXML 
+    private TextField updateSign;
     @FXML
     private Button clearBtn;
 
@@ -41,49 +32,59 @@ public class HomeController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.homeModel = new HomeModel();
-        this.loadEmployeeData();        
+        userName_string = this.username_label.getText();
+        try {
+            this.loadUserData();
+        } catch (IOException | InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }        
     }
 
     //load data
     @FXML
-    public void loadEmployeeData(){
-
-        this.idColumn.setCellValueFactory( new PropertyValueFactory<EmployeeData, String>("id"));
-        this.nameColumn.setCellValueFactory( new PropertyValueFactory<EmployeeData, String>("name"));
-        this.departmentColumn.setCellValueFactory( new PropertyValueFactory<EmployeeData, String>("department"));
-
-        this.employeeDataTableView.setItems(homeModel.getEmployees());
+    public void loadUserData() throws IOException, InterruptedException{
+        username_label.setWrapText(true);
+        this.username_label.setText("Hi! " + userName_string+ " ");
+        // System.out.println(" "+userName_string + "  Sign: "+ homeModel.getSign(userName_string));
+        
+        //Api
+        horoscope_label.setWrapText(true);
+        horoscope_label.setTextAlignment(TextAlignment.JUSTIFY);
+        System.out.println(homeModel.getHoroscope(homeModel.getSign(userName_string)));
+        this.horoscope_label.setText(homeModel.getHoroscope(homeModel.getSign(userName_string)));
     }
 
-    //add employee
+    //update User's name
     @FXML
-    private void addEmployee(ActionEvent event){
-        homeModel.addEmployee(this.name.getText(), this.department.getText());
-        this.loadEmployeeData();
+    private void updateUserName(ActionEvent event) throws IOException, InterruptedException{
+        homeModel.updateUserName(this.userName_string,  homeModel.getSign(userName_string), this.updateName.getText());
+        userName_string = updateName.getText();
+        this.loadUserData();
         this.clearFields(null);
     }
 
-    //update employee
+    //update User's sign
     @FXML
-    private void updateEmployee(ActionEvent event){
-        homeModel.updateEmployee(this.name.getText(), this.department.getText(), this.updateName.getText());
-        this.loadEmployeeData();
+    private void updateUserSign(ActionEvent event) throws IOException, InterruptedException{
+        homeModel.updateUserSign(this.userName_string,homeModel.getSign(userName_string), this.updateSign.getText());
+        this.loadUserData();
         this.clearFields(null);
     }
-    
-    //delete employee
+    /*
+    //delete User
     @FXML
-    private void deleteEmployee(ActionEvent event){
-        homeModel.deleteEmployee(this.name.getText(), this.department.getText());
-        this.loadEmployeeData();
+    private void deleteUser(ActionEvent event){
+        homeModel.deleteUser(this.name.getText(), this.sign.getText());
+        this.loadUserData();
         this.clearFields(null);
     }
-
+ */
     //clear fields
     @FXML
     private void clearFields(ActionEvent event){
-        this.name.setText("");
-        this.department.setText("");
+        this.updateName.setText("");
+        this.updateSign.setText("");
     }
 
 }
