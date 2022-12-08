@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone</title>
+  <!--   <link rel="stylesheet" href="phone_positioning.css"> -->    
+    <style>
+        :root {
+            --primary-bg: rgb(31, 37, 44);
+            --secondary-bg: rgba(0,0,0,0.9);
+            --box-shadow-color-1: gold;
+            --box-shadow-color-2: rgba(149,165,166 ,0.1);
+            --box-shadow-color-3: #ecf0f1;
+            --phone-width: 350px;
+            --phone-height: 700px;
+            --screen-bg-color:  rgb(44,61,80);
+        }
+
+        body{
+            background-color: var(--primary-bg);
+            display: flex;
+            justify-content: center; 
+            min-height: 800px;
+        }
+
+        .phone_case{
+            background-color: var(--secondary-bg);
+            min-width: var(--phone-width);
+            min-height: var(--phone-height);
+            max-width: var(--phone-width);
+            max-height: var(--phone-height);
+            justify-content: center;
+            align-items: center;
+            border-radius: 25px;
+            box-shadow: 5px  10px var(--box-shadow-color-2);
+            border-style: solid;
+            border-bottom: 0px;
+            border-right: 0px;
+            border-color: var(--box-shadow-color-1);
+        }
+
+        .top_content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 78px;
+        }
+        .bottom_content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 78px;
+        }
+
+        .microphone{
+            position: absolute;
+            margin-top: -38px;
+            background-color: var(--screen-bg-color);
+            border-radius: 50%;
+            min-width: 10px;
+            min-height: 10px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .camera{
+            position: absolute;
+            margin-left: -130px;
+            background-color: var(--screen-bg-color);
+            border-radius: 50%;
+            min-width: 15px;
+            min-height: 15px;
+            width: 10px;
+            height: 10px;
+            margin-right: 1rem;
+        }
+        .speaker{
+            position: absolute;
+            margin-top: 15px;
+            margin-left: 0px;
+            background-color: var(--screen-bg-color);
+            border-radius: 20%;
+            min-width: 100px;
+            min-height: 15px;
+            width: 10px;
+            height: 10px;
+        }
+
+        .screen{
+            margin-left: 7%;
+            background-color: var(--screen-bg-color);
+            width: 85%;
+            height: 530px;
+        }
+
+        .button{
+            position: absolute;
+            margin-left: 2%;
+            margin-top: 2%;
+            background-color: var(--secondary-bg);
+            border-radius: 50%;
+            min-width: 35px;
+            min-height: 35px;
+            width: 10px;
+            height: 10px;
+            margin-right: 1rem;
+            border-style: solid;
+            border-bottom: 0.4px;
+            border-right: 0.2px;
+            border-color: var(--box-shadow-color-1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="phone_case">
+            <div class="top_content">
+                <div class="microphone"></div>
+                    <div class="circle camera"></div>
+                    <div class="speaker"></div>
+            </div>
+            <div class="screen"></div>
+            <div class="bottom_content">
+                <div class="button"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
