@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .box{
+            display: inline-block;
+            padding: 1rem;
+            margin: 1rem;
+            background-color: rgb(210, 143, 48);
+            /*         offset x    offset y      blur     color*/
+                box-shadow: 10px         10px      20px      rgb(33, 44, 33);
+            }
+
+            h1.a{
+                    /*     h shadow   v shadow      blur        color*/
+                text-shadow: 2px        2px       0.3rem    rgb(241, 63, 63);
+                color: aliceblue;
+            }
+
+            :root{
+                --light-color: rgb(61, 41, 119);
+                --bk-color: rgb(199, 196, 204);
+                --max-value:80%;
+            }
+            header{
+                background-color: var(--light-color);
+            }
+            .container{
+                max-width: var(--max-value);
+                background-color: var(--bk-color);
+            }
+            .box{
+                --box-bg-color: rgb(74, 105, 74);
+                --box-text-color: rgb(197, 197, 197);
+                --box-1-width: 70%;
+                --box-2-width: 40%;
+                animation-name: animate1;
+                animation-iteration-count:infinite;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+            }
+            @keyframes animate1 {
+                from {
+                    top: 0;
+                }
+                to{
+                    top: 200px;
+                }
+            }
+            .box-1{
+                background-color: var(--box-bg-color);
+                color: var(--box-text-color);
+                max-width: var(--box-1-width);
+               
+            }
+            .box-2{
+                max-width: var(--box-2-width);
+                color: var(--box-text-color);
+            }
+          
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>Box Shadow</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
+            elit. Quasi neque eveniet laudantium sint, reprehenderit
+             voluptatem! Numquam ut necessitatibus laboriosam 
+             voluptatem neque accusantium dolores, iusto sequi! 
+             Dolores sunt est adipisci excepturi.</p>
+    </div>
+    <div class="box">
+        <h3>Box shadow</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
+            elit. Quasi neque eveniet laudantium sint, reprehenderit
+             voluptatem! Numquam ut necessitatibus laboriosam 
+             voluptatem neque accusantium dolores, iusto sequi! 
+             Dolores sunt est adipisci excepturi.</p>
+    </div>
+    <h1 class="a">This is a heading</h1>
+    <h1 class="b">This is a heading</h1>
+    <header>
+        <h1>CSS Variables</h1>
+    </header>
+    <div class="container"> 
+        <div class="box box-1">
+            <h3>Box 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
+                elit. Quasi neque eveniet laudantium sint, reprehenderit
+                 voluptatem! Numquam ut necessitatibus laboriosam 
+                 voluptatem neque accusantium dolores, iusto sequi! 
+                 Dolores sunt est adipisci excepturi.</p>
+        </div>
+        <div class="box box-2">
+            <h3>Box 2 </h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing 
+                elit. Quasi neque eveniet laudantium sint, reprehenderit
+                 voluptatem! Numquam ut necessitatibus laboriosam 
+                 voluptatem neque accusantium dolores, iusto sequi! 
+                 Dolores sunt est adipisci excepturi.</p>
+        </div>
+    </div>
+</body>
+</html>
