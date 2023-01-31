@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat",sans-serif;
+    box-sizing: border-box;
+  }
+  
+  body{
+    background-image: linear-gradient(80deg,#96d1cd,#Dbe1f5);
+    min-height: 100vh;
+  }
+  
+  h3{
+    margin: 10px 0;
+  }
+  
+  #addTask{
+    float: right;
+    margin-right: 30px;
+    margin-top: 10px;
+    background: none;
+    cursor: pointer;
+    border: none;
+    font-size: 25px;
+  }
+  
+  .container{
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 10px;
+  }
+  
+  .textBox{
+    width: 90%;
+    border: none;
+    border-bottom: 2px solid #000;
+    background: none;
+    padding: 10px;
+    outline: none;
+    font-size: 18px;
+  }
