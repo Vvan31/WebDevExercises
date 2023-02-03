@@ -37,14 +37,16 @@ Optional
             newdiv.innerHTML = input_message;
     //Create a delete button element with the id set to delete and 
     //the class set to fas fa-trash-alt. 
-            const delete_btn = document.createElement( "btn" );
+            const delete_btn = document.createElement( "button" );
             delete_btn.className ="fas fa-trash-alt";
             delete_btn.id = "delete";
+
     // Create a done button element with the id set to done and 
     // the class set to fas fa-check.
-            const done_btn = document.createElement( "btn" );
+            const done_btn = document.createElement( "button" );
             done_btn.className ="fas fa-check";
             done_btn.id = "done";
+
     // Insert the delete and the done button elements at the end 
     // of the newly created task element.
             $( newdiv ).append( delete_btn );
@@ -53,16 +55,22 @@ Optional
     // Insert the div task element at the  of the div element with 
     // class notCompleted.
             $( ".notCompleted" ).append( newdiv );
-            
-            console.log(newdiv);
 
-            alert("New Task: " + input_message) 
+           /*  alert("New Task: " + input_message) */ 
         } else {
             alert("Error: Please enter a task first");
         } 
     })
 
-    $('#delete').click(function(){
-        this.remove(); // ????????
+
+    $('div').on("click", "#done", function(){
+        console.log("done");
+        $( ".completed" ).append( $(this).parent() );
     });
+    $('div').on("click", "#delete", function(){
+        console.log("delete");
+        $("#delete").parent().remove(); 
+    });
+
+
 });
