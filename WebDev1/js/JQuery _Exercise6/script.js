@@ -62,7 +62,12 @@ Optional
         } 
     })
 
-    $('#delete').click(function(){
+
+/*     $('#delete').click(function(){
         this.remove(); // ????????
+ */
+    $('div').on("click", "#done", function(){
+        console.log("done");
+        $( ".completed" ).append($(this).parent());
     });
 });
