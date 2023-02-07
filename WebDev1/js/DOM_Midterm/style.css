@@ -1,0 +1,89 @@
+body{
+    margin: 0;
+}
+.wrapper{
+    background-color: rgb(55, 63, 60);
+}
+.banner{
+    padding-left: 5%;
+   background-color: rgb(61, 50, 129);
+   color: antiquewhite;
+}
+.logo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 10%;
+}
+/* Hamburger menu */
+#menu {
+    z-index: 2;
+  }
+  
+  #menu-bar {
+    margin-left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav {
+    display: none;
+  }
+  
+  .nav ul {
+    padding: 0 22px;
+  }
+  
+  .nav li {
+    list-style: none;
+    padding: 12px 0;
+  }
+  
+  .nav li a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  .nav li a:hover {
+    font-weight: bold;
+  }
+  
+  .menu-bg, #menu {
+    top: 0;
+    right: 10%;
+    position: absolute;
+  }
+  
+  .menu-bg {
+    z-index: 1;
+    background:  #0f0e0e;
+  }
+  
+.change {
+    display: block;
+  }
+  
+  .change-bg {
+    width: 30%;
+    height: 50%;
+    right: 0;
+  }
+  /* End of Hamburger menu */
+
+  /* Cards */
+  .food-section{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 90vh;
+  }
+  .card{
+    background-color: #e0ddeb;
+    margin: 2%;
+    min-width: 30%;
+    height: auto;
+    padding: 5%;
+  }
