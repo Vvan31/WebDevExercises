@@ -3,11 +3,9 @@ body{
     background-color: #2F5061;
     
 }
-.wrapper{
-   
-}
+
 .banner{
-    padding-left: 5%;
+  padding-left: 5%;
    background-color: #4297A0;
    color: antiquewhite;
    position: fixed;
@@ -76,6 +74,12 @@ body{
     right: 0;
   }
   /* End of Hamburger menu */
+
+
+  #total{
+    bottom: 0;
+  }
+
 
   /* Cards */
   .food-section{

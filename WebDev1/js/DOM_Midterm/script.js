@@ -2,7 +2,10 @@ const postTemplate = document.querySelector(".card-template")
 const listElement = document.querySelector(".posts")
 const addbtn = document.querySelector(".add_btn")
 const cartTemplate = document.querySelector(".cart-template")
-const listCart = document.querySelector(".products")
+const listCart = document.querySelector(".cart-products")
+
+let number_products = 0;
+let total = 0;
 
 $(document).ready(function () {
     fetchPosts();
@@ -10,7 +13,7 @@ $(document).ready(function () {
     $('#menu').click(function(){
         console.log("CLicked");
         document.getElementById("menu-bar").classList.toggle("change");
-        document.getElementById("ul").classList.toggle("change");
+        document.getElementById("nav").classList.toggle("change");
         document.getElementById("menu-bg").classList.toggle("change-bg");
     })
     // API GET products.
@@ -26,8 +29,6 @@ $(document).ready(function () {
 
          if(dataArray.length > 0){
             for(const post of dataArray){
-                console.log("post");
-                console.log("\"" +post.images[0] +"\"");
                 const postElClone = document.importNode(postTemplate.content, true)
                 postElClone.querySelector("h3").textContent = post.title
                 postElClone.querySelector("p").textContent = "Price: $"+post.price
@@ -36,10 +37,31 @@ $(document).ready(function () {
             }
         } 
     }
-    
+
     // Add products to shopping cart. 
+    document.addEventListener("click", function(e){
+        const target = e.target.closest("#add_btn"); // Or any other selector.
+        if(target){
+          // Do something with `target`.
+          const main_div = target.parentNode
+          //create post
+          const product = document.createElement("div");
+          const price = main_div.querySelector("#price").innerHTML.replace(/[^0-9]/gi, '');
+          product.className = "cart_product";
+          product.innerHTML = main_div.querySelector("#product_name").innerHTML + " - " + price; 
+          
+          const delete_btn = document.createElement( "button" );
+          delete_btn.className ="fas fa-trash-alt";
+          delete_btn.id = "delete";
+          $(product).append( delete_btn);
 
-
+          //Update product count and total 
+          total += price;
+          number_products += 1;
+          //adds to cart
+            $(".cart-products").append(product)
+        }
+      });
 
 /* 
     $('#addTask').click(function(){
@@ -83,3 +105,4 @@ $(document).ready(function () {
         this.remove(); // ????????
     }); */
 });
+/* addbtn.addEventListener("click", addProduct) */

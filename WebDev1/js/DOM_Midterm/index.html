@@ -25,15 +25,16 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                         <h2 id="counter">(0)</h2>
                     </div>
-                    <nav class="nav" id="nav">
-                      <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
-                      </ul>
+                    <template class="cart-template">
+                        <div class="product">
+                            <img src="" alt="product name" id="produt-image">
+                            <h3 id="product_name">Product name</h3>
+                            <p id="price">price $20 </p>
+                            <button id="add_btn">Remove</button>
+                        </div>
+                    </template>
+                      <ul class="cart-products" id="nav"></ul>
                       <p class="total"> Total: $0</p>
-                    </nav> 
                 </div>
                   
                 <div class="menu-bg" id="menu-bg"></div>  
