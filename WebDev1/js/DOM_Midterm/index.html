@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/b8190c3a5e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -31,50 +32,24 @@
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Blog</a></li>
                       </ul>
+                      <p class="total"> Total: $0</p>
                     </nav> 
                 </div>
                   
                 <div class="menu-bg" id="menu-bg"></div>  
-                <!-- 
-                <input type="checkbox" class="toggeler">
-                <div class="hamburger"><div></div></div>
-                <div class="menu">
-                    <div>
-                        <ul>
-                            <li><a href='#'>Home</a></li>
-                            <li><a href='#'>About</a></li>
-                            <li><a href='#'>Services</a></li>
-                            <li><a href='#'>Contact</a></li>
-                        </ul>
-                    </div>
-                </div>-->
             </div>
         </header>
 
         <div class="food-section">
-            <div class="card">
-                <img src="" alt="product name">
-                <h3>Product name</h3>
-                <p>price $20 </p>
-                <button>Add to cart</button>
-            </div>
-            <div class="card">
-                <img src="" alt="product name">
-                <h3>Product name</h3>
-                <p>price $20 </p>
-                <button>Add to cart</button>
-            </div>
-            <div class="card">
-                <img src="" alt="product name">
-                <h3>Product name</h3>
-                <p>price $20 </p>
-                <button>Add to cart</button>
-            </div><div class="card">
-                <img src="" alt="product name">
-                <h3>Product name</h3>
-                <p>price $20 </p>
-                <button>Add to cart</button>
-            </div>
+            <template class="card-template">
+                <div class="card">
+                    <img src="" alt="product name" id="image">
+                    <h3 id="product_name">Product name</h3>
+                    <p id="price">price $20 </p>
+                    <button id="add_btn">Add to cart</button>
+                </div>
+            </template>
+            <div class="posts"></div>
         </div>
     </div>
     <script src="script.js"></script>

@@ -1,13 +1,46 @@
+const postTemplate = document.querySelector(".card-template")
+const listElement = document.querySelector(".posts")
+const addbtn = document.querySelector(".add_btn")
+const cartTemplate = document.querySelector(".cart-template")
+const listCart = document.querySelector(".products")
+
 $(document).ready(function () {
-    // code goes here
-  
+    fetchPosts();
+    // menu 
     $('#menu').click(function(){
         console.log("CLicked");
         document.getElementById("menu-bar").classList.toggle("change");
-        document.getElementById("nav").classList.toggle("change");
+        document.getElementById("ul").classList.toggle("change");
         document.getElementById("menu-bg").classList.toggle("change-bg");
     })
+    // API GET products.
+    async function sendHttpRequest(method, url, content){
+        const { data } = await axios(url, { method })
+        return data
+    }
+
+    async function fetchPosts(){
+    let responseData = await sendHttpRequest("GET", "https://dummyjson.com/products","");
+    let dataArray = Object.entries(responseData)[0][1];
+    console.log(dataArray)
+
+         if(dataArray.length > 0){
+            for(const post of dataArray){
+                console.log("post");
+                console.log("\"" +post.images[0] +"\"");
+                const postElClone = document.importNode(postTemplate.content, true)
+                postElClone.querySelector("h3").textContent = post.title
+                postElClone.querySelector("p").textContent = "Price: $"+post.price
+                postElClone.querySelector("img").src = post.images[0]
+                listElement.appendChild(postElClone)
+            }
+        } 
+    }
     
+    // Add products to shopping cart. 
+
+
+
 /* 
     $('#addTask').click(function(){
         const input_message = $(".textBox").val();

@@ -1,13 +1,17 @@
 body{
     margin: 0;
+    background-color: #2F5061;
+    
 }
 .wrapper{
-    background-color: rgb(55, 63, 60);
+   
 }
 .banner{
     padding-left: 5%;
-   background-color: rgb(61, 50, 129);
+   background-color: #4297A0;
    color: antiquewhite;
+   position: fixed;
+   width: 100%;
 }
 .logo{
     display: flex;
@@ -53,12 +57,13 @@ body{
   .menu-bg, #menu {
     top: 0;
     right: 10%;
-    position: absolute;
+    position: fixed;
+    border-radius: 10px 0px 10px 10px;
   }
   
   .menu-bg {
     z-index: 1;
-    background:  #0f0e0e;
+    background:  #E57F84;
   }
   
 .change {
@@ -79,11 +84,33 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 90vh;
+    padding-top: 5%;
   }
   .card{
-    background-color: #e0ddeb;
+    background-color: #F4EAE6;
     margin: 2%;
-    min-width: 30%;
+    min-width: 18%;
+    max-width: 15%;
     height: auto;
     padding: 5%;
+    border-radius: 10%;
+    box-shadow: 12px 12px 2px 0px #E57F84;
+  }
+  .posts{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img{
+    width: 95%;
+    height: auto;
+  }
+  button{
+    border-radius: 5px 5px 5px 5px;
+    color: #F4EAE6;
+    background-color: #4297A0;
+    width: 90%;
+    height: 40px;
   }
