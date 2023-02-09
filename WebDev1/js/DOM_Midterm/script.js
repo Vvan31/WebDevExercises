@@ -1,20 +1,25 @@
 const postTemplate = document.querySelector(".card-template")
 const listElement = document.querySelector(".posts")
 const addbtn = document.querySelector(".add_btn")
-const cartTemplate = document.querySelector(".cart-template")
 const listCart = document.querySelector(".cart-products")
+const totalTag = document.querySelector(".total")
+const counterTag = document.querySelector(".counter")
 
 let number_products = 0;
 let total = 0;
 
+let products_in_cart = {};
+
 $(document).ready(function () {
     fetchPosts();
     // menu 
-    $('#menu').click(function(){
+    $('#menu-bar').click(function(){
         console.log("CLicked");
-        document.getElementById("menu-bar").classList.toggle("change");
+        document.getElementById("menu-bar").classList.toggle("change-top");
         document.getElementById("nav").classList.toggle("change");
         document.getElementById("menu-bg").classList.toggle("change-bg");
+       /*  document.getElementById("menu-bg").classList.toggle("change-bg"); */
+        totalTag.classList.toggle("change");
     })
     // API GET products.
     async function sendHttpRequest(method, url, content){
@@ -40,9 +45,10 @@ $(document).ready(function () {
 
     // Add products to shopping cart. 
     document.addEventListener("click", function(e){
-        const target = e.target.closest("#add_btn"); // Or any other selector.
+        const target = e.target.closest("#add_btn");
+        const deleteTarget= e.target.closest("#delete");
+
         if(target){
-          // Do something with `target`.
           const main_div = target.parentNode
           //create post
           const product = document.createElement("div");
@@ -56,53 +62,33 @@ $(document).ready(function () {
           $(product).append( delete_btn);
 
           //Update product count and total 
-          total += price;
-          number_products += 1;
+          updateCounterAndTotal(price, 1)
           //adds to cart
+            //add to array. 
+            /* 
+            if (product in products_in_cart) {
+                
+            }else{
+
+            } */
+
             $(".cart-products").append(product)
+         
+        }else if(deleteTarget){
+            const main_div = deleteTarget.parentNode
+            const price = main_div.innerHTML.replace(/^[^-]*/gi, '').replace(/[^0-9]/gi, '')
+
+            updateCounterAndTotal("-"+price, -1)
+            console.log(price);
+            console.log(main_div);
+            main_div.remove();
         }
       });
 
-/* 
-    $('#addTask').click(function(){
-        const input_message = $(".textBox").val();
-        $(".textBox").val("");
-        if (input_message) {
-
-    // Create a div task element with the class set to task and 
-    //the text equal to the value of the input box.
-            const newdiv = document.createElement( "div" );
-            newdiv.className ="task";
-            newdiv.innerHTML = input_message;
-    //Create a delete button element with the id set to delete and 
-    //the class set to fas fa-trash-alt. 
-            const delete_btn = document.createElement( "btn" );
-            delete_btn.className ="fas fa-trash-alt";
-            delete_btn.id = "delete";
-    // Create a done button element with the id set to done and 
-    // the class set to fas fa-check.
-            const done_btn = document.createElement( "btn" );
-            done_btn.className ="fas fa-check";
-            done_btn.id = "done";
-    // Insert the delete and the done button elements at the end 
-    // of the newly created task element.
-            $( newdiv ).append( delete_btn );
-            $( newdiv ).append( done_btn );
-            
-    // Insert the div task element at the  of the div element with 
-    // class notCompleted.
-            $( ".notCompleted" ).append( newdiv );
-            
-            console.log(newdiv);
-
-            alert("New Task: " + input_message) 
-        } else {
-            alert("Error: Please enter a task first");
-        } 
-    })
-
-    $('#delete').click(function(){
-        this.remove(); // ????????
-    }); */
+      function updateCounterAndTotal(price, count){
+        total += parseInt(price);
+        number_products += parseInt(count);
+        totalTag.innerHTML ="Total: $" + total
+        counterTag.innerHTML = " (" + number_products + ")" 
+      }
 });
-/* addbtn.addEventListener("click", addProduct) */
