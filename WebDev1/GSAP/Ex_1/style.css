@@ -1,0 +1,88 @@
+.wrapper{
+    width: 100vw;
+    top:0%; 
+    overflow-x: hidden;
+}
+.nav{
+    width: 100vw;
+    height: 10vh;
+    display: inline-flex;
+    padding-left: 10%;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    font-family: "Poppins";
+    font-size: 1.6rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.menu-links{
+    font-family: Poppins;
+    display: inline-flex;
+    font-size: 13px;
+    width: 65vw;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+li {
+    display: inline;
+}
+a {
+    color: black;
+    padding: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bolder;
+
+  }
+
+.content{
+    padding-left: 23%;
+    padding-right: 23%;
+    padding-top: 3%;
+    font-family: "Montserrat";
+}
+.tagline{
+    color: rgb(174, 173, 173);
+    font-size: 1.6rem;
+    font-weight:500;
+
+}
+.title{
+    font-family: "Poppins";
+    font-size: 10rem;
+    font-weight: bolder;
+    letter-spacing: 0.9rem;
+    text-transform: uppercase;
+    line-height: 11rem;
+}
+.desc{
+    color: rgb(109, 108, 108);
+    font-size: 1.3rem;
+    font-weight:600;
+    letter-spacing: 0.15rem;
+
+}
+span{
+    color: rgb(176,179,138);
+}
+.text{
+    font-size: small;
+    letter-spacing: normal;
+    width: 30%;
+    line-height: 1.6rem;
+    text-align: justify;
+}
+.beer{
+    position: fixed;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+}
+.beer img{
+    width: 30rem;
+    height: auto;
+}
