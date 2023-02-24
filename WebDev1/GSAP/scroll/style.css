@@ -1,0 +1,26 @@
+body{
+    background-color: bisque;
+    padding: 0px;
+}
+*{
+    padding: 0px;
+}
+
+.block{
+    height: 100vh;
+    margin: 0;
+    padding: 5%;
+    text-align: center;
+    align-content: center;
+    
+}
+.b1{
+    background-color: rgb(189, 107, 188);
+}
+.b2{
+    background-color: rgb(107, 112, 189);
+
+}
+.b3{
+    background-color: rgb(130, 35, 35);
+}

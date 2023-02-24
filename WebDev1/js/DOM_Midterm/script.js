@@ -49,43 +49,61 @@ $(document).ready(function () {
         const deleteTarget= e.target.closest("#delete");
 
         if(target){
-          const main_div = target.parentNode
-          //create post
-          const product = document.createElement("div");
-          const price = main_div.querySelector("#price").innerHTML.replace(/[^0-9]/gi, '');
-          product.className = "cart_product";
-          product.innerHTML = main_div.querySelector("#product_name").innerHTML + " - " + price; 
-          
-          const delete_btn = document.createElement( "button" );
-          delete_btn.className ="fas fa-trash-alt";
-          delete_btn.id = "delete";
-          $(product).append( delete_btn);
+            createElement(target)
 
-          //Update product count and total 
-          updateCounterAndTotal(price, 1)
-          //adds to cart
-            //add to array. 
-            /* 
-            if (product in products_in_cart) {
-                
-            }else{
-
-            } */
-
-            $(".cart-products").append(product)
+       
          
         }else if(deleteTarget){
             const main_div = deleteTarget.parentNode
             const price = main_div.innerHTML.replace(/^[^-]*/gi, '').replace(/[^0-9]/gi, '')
-
-            updateCounterAndTotal("-"+price, -1)
             console.log(price);
-            console.log(main_div);
+            updateCounterAndTotal("-"+price, "-" + products_in_cart[main_div.id])
             main_div.remove();
         }
       });
 
+      function createElement(target){
+        const main_div = target.parentNode
+        //create post
+        const product = document.createElement("div");
+        const price = main_div.querySelector("#price").innerHTML.replace(/[^0-9]/gi, '');
+
+        const name = main_div.querySelector("#product_name").innerHTML
+        if (name in products_in_cart) {
+            updateElement(name,1);
+
+        } else {
+            products_in_cart[name] = 1;
+        
+            product.className = "cart_product";
+            product.innerHTML = "x" + products_in_cart[name] + " " + name + " - " + price; 
+            product.id = name;
+            const delete_btn = document.createElement( "button" );
+            delete_btn.className ="fas fa-trash-alt";
+            delete_btn.id = "delete";
+            $(product).append( delete_btn);
+        }
+            //Update product count and total 
+        updateCounterAndTotal(price, 1)
+
+        $(".cart-products").append(product)
+      }
+
+      function updateElement(name, count){
+        console.log(products_in_cart);
+
+        const product = document.getElementById(name) 
+        products_in_cart[name] = products_in_cart[name] + count;
+        console.log(name + products_in_cart);
+        
+        product.innerHTML = product.innerHTML.replace(/^[^x]*/gi, '')
+        product.innerHTML = products_in_cart[name] + product.innerHTML
+      }
+
       function updateCounterAndTotal(price, count){
+        if (count < 0) {
+            price = price * count * -1;
+        }
         total += parseInt(price);
         number_products += parseInt(count);
         totalTag.innerHTML ="Total: $" + total
